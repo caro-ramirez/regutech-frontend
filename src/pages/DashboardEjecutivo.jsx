@@ -5,7 +5,7 @@ import { COLOR_SEVERIDAD } from "../utils/severidad";
 import {
   PieChart, Pie, Cell, Tooltip, Legend,
   BarChart, Bar, XAxis, YAxis, CartesianGrid,
-  LineChart, Line, ResponsiveContainer, defs,
+  LineChart, Line, ResponsiveContainer,
 } from "recharts";
 
 const tooltipStyle = {
