@@ -66,16 +66,16 @@ export default function BackofficeNormasGlobales() {
         </p>
 
         <div className="row g-2 mb-3">
-          <div className="col-4">
+          <div className="col-md-4 col-12">
             <input className="form-control form-control-sm rt-input" placeholder="Nombre de la norma" value={nuevaNormaNombre} onChange={(e) => setNuevaNormaNombre(e.target.value)} />
           </div>
-          <div className="col-3">
+          <div className="col-md-3 col-6">
             <input className="form-control form-control-sm rt-input" placeholder="Descripción (opcional)" value={nuevaNormaDesc} onChange={(e) => setNuevaNormaDesc(e.target.value)} />
           </div>
-          <div className="col-3">
+          <div className="col-md-3 col-6">
             <input className="form-control form-control-sm rt-input" placeholder="Categoría (ej. Calidad)" value={nuevaNormaCategoria} onChange={(e) => setNuevaNormaCategoria(e.target.value)} />
           </div>
-          <div className="col-2">
+          <div className="col-md-2 col-12">
             <button className="btn rt-btn-primary btn-sm w-100" onClick={handleCrearNorma}>Crear</button>
           </div>
         </div>
@@ -113,16 +113,16 @@ export default function BackofficeNormasGlobales() {
           </div>
 
           <div className="row g-2 mb-2">
-            <div className="col-7">
+            <div className="col-md-7 col-12">
               <input className="form-control form-control-sm rt-input" placeholder="Nuevo ítem del checklist" value={nuevoItemDesc} onChange={(e) => setNuevoItemDesc(e.target.value)} />
             </div>
-            <div className="col-3">
+            <div className="col-md-3 col-6">
               <select className="form-select form-select-sm rt-input" value={nuevoItemCrit} onChange={(e) => setNuevoItemCrit(e.target.value)}>
                 <option value="">Criticidad...</option>
                 {OPCIONES_SEVERIDAD.map((s) => <option key={s}>{s}</option>)}
               </select>
             </div>
-            <div className="col-2">
+            <div className="col-md-2 col-6">
               <button className="btn rt-btn-primary btn-sm w-100" onClick={handleAgregarItem}>Agregar</button>
             </div>
           </div>

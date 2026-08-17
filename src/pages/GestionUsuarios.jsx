@@ -62,23 +62,23 @@ export default function GestionUsuarios() {
       {mostrarForm && (
         <div className="p-3 rounded-3 mb-4" style={{ border: "1px solid var(--rt-border)" }}>
           <div className="row g-2 mb-2">
-            <div className="col-3">
+            <div className="col-md-3 col-6">
               <input className="form-control form-control-sm rt-input" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
             </div>
-            <div className="col-3">
+            <div className="col-md-3 col-6">
               <input className="form-control form-control-sm rt-input" placeholder="Correo" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="col-3">
+            <div className="col-md-3 col-6">
               <select className="form-select form-select-sm rt-input" value={rol} onChange={(e) => setRol(e.target.value)}>
                 <option value="">Rol...</option>
                 {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
               </select>
             </div>
-            <div className="col-3">
+            <div className="col-md-3 col-6">
               <input className="form-control form-control-sm rt-input" placeholder="Área (opcional)" value={area} onChange={(e) => setArea(e.target.value)} />
             </div>
             {rol === "ResponsableCumplimiento" && (
-              <div className="col-3">
+              <div className="col-md-3 col-6">
                 <input className="form-control form-control-sm rt-input" placeholder="Especialidad (ej. Calidad)" value={especialidad} onChange={(e) => setEspecialidad(e.target.value)} />
               </div>
             )}
