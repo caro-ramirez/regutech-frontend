@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import logoMedium from "../../assets/logo-medium.png";
 
 const NAV_BY_ROLE = {
   Backoffice: [
@@ -39,13 +40,12 @@ export default function Layout() {
   };
 
   return (
-    <div className="d-flex">
-      <aside className="rt-sidebar p-3 d-flex flex-column">
+    <div className="rt-app-shell">
+      <aside className="rt-sidebar">
         <div className="d-flex align-items-center gap-2 mb-4 px-2">
-          <i className="bi bi-shield-lock" style={{ color: "var(--rt-accent)" }}></i>
-          <span className="fw-semibold">ReguTech</span>
+          <img src={logoMedium} alt="ReguTech" style={{ height: 28 }} />
         </div>
-        <nav className="d-flex flex-column gap-1 flex-grow-1">
+        <nav className="d-flex flex-column gap-1 flex-grow-1" style={{ overflowY: "auto" }}>
           {items.map((item) => (
             <Link
               key={item.to}
@@ -60,7 +60,7 @@ export default function Layout() {
           ))}
         </nav>
         <button
-          className="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 justify-content-center"
+          className="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 justify-content-center mt-3"
           onClick={handleLogout}
         >
           <i className="bi bi-box-arrow-right"></i>
@@ -68,9 +68,11 @@ export default function Layout() {
         </button>
       </aside>
 
-      <main className="flex-grow-1">
-        <header className="d-flex align-items-center justify-content-between px-4"
-                 style={{ height: 64, borderBottom: "1px solid var(--rt-border)" }}>
+      <div className="rt-main">
+        <header
+          className="d-flex align-items-center justify-content-between px-4"
+          style={{ height: 64, borderBottom: "1px solid var(--rt-border)", position: "sticky", top: 0, background: "var(--rt-bg)", zIndex: 10 }}
+        >
           <div>
             <div className="fw-medium small">{usuario?.nombre}</div>
             <div className="rt-muted" style={{ fontSize: "0.75rem" }}>{usuario?.rol}</div>
@@ -80,10 +82,10 @@ export default function Layout() {
           </span>
         </header>
 
-        <div className="p-4">
+        <div className="rt-content">
           <Outlet />
         </div>
-      </main>
+      </div>
     </div>
   );
 }

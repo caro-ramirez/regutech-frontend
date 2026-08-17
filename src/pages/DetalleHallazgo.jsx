@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiGet, apiPatch } from "../utils/api";
+import { claseSeveridad } from "../utils/severidad";
 import { useAuth } from "../context/AuthContext";
 
 export default function DetalleHallazgo() {
@@ -173,7 +174,7 @@ export default function DetalleHallazgo() {
     <div className="rt-panel p-4" style={{ maxWidth: 560 }}>
       <div className="d-flex justify-content-between align-items-start mb-2">
         <h1 className="fs-5 fw-semibold mb-0">{item_descripcion}</h1>
-        <span className={`rt-badge ${severidad === "Alta" ? "rt-badge-alta" : severidad === "Media" ? "rt-badge-media" : "rt-badge-baja"}`}>
+        <span className={`rt-badge ${claseSeveridad(severidad)}`}>
           {severidad}
         </span>
       </div>

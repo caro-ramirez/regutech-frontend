@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import logoFull from "../assets/logo-full.png";
 
 const RUTA_INICIAL = {
+  Backoffice: "/backoffice/entidades",
   Administrador: "/dashboard",
   ResponsableCumplimiento: "/auditorias",
   Colaborador: "/capacitaciones",
@@ -32,18 +34,20 @@ export default function Login() {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100">
-      <form onSubmit={handleSubmit} className="rt-panel p-4" style={{ width: "100%", maxWidth: "380px" }}>
-        <div className="d-flex align-items-center gap-2 mb-4">
-          <div className="d-flex align-items-center justify-content-center rounded-3"
-               style={{ width: 36, height: 36, backgroundColor: "rgba(45,212,191,0.1)", border: "1px solid rgba(45,212,191,0.3)" }}>
-            <i className="bi bi-shield-lock" style={{ color: "var(--rt-accent)" }}></i>
-          </div>
-          <span className="fw-semibold fs-5">ReguTech</span>
+    <div
+      className="d-flex align-items-center justify-content-center vh-100"
+      style={{
+        backgroundImage: "radial-gradient(circle at 1px 1px, rgb(51 65 85 / 0.35) 1px, transparent 0)",
+        backgroundSize: "24px 24px",
+      }}
+    >
+      <form onSubmit={handleSubmit} className="rt-panel p-4" style={{ width: "100%", maxWidth: "400px" }}>
+        <div className="d-flex justify-content-center mb-4">
+          <img src={logoFull} alt="ReguTech" style={{ maxWidth: 260, width: "100%" }} />
         </div>
 
-        <h1 className="fs-4 fw-semibold mb-1">Acceder a la plataforma</h1>
-        <p className="rt-muted small mb-4">Compliance financiero, bajo control.</p>
+        <h1 className="fs-4 fw-semibold mb-1 text-center">Acceder a la plataforma</h1>
+        <p className="rt-muted small mb-4 text-center">Compliance financiero, bajo control.</p>
 
         <div className="mb-3">
           <input

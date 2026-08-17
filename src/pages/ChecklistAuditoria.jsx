@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { apiGet, apiPost } from "../utils/api";
+import { claseSeveridad } from "../utils/severidad";
 
 export default function ChecklistAuditoria() {
   const { id } = useParams();
@@ -73,7 +74,7 @@ export default function ChecklistAuditoria() {
         {hallazgos.map((h) => (
           <div key={h.id_item} className="d-flex justify-content-between py-2" style={{ borderBottom: "1px solid var(--rt-border)" }}>
             <span className="small">{h.descripcion}</span>
-            <span className={`rt-badge ${h.criticidad === "Alta" ? "rt-badge-alta" : "rt-badge-media"}`}>{h.criticidad}</span>
+            <span className={`rt-badge ${claseSeveridad(h.criticidad)}`}>{h.criticidad}</span>
           </div>
         ))}
         <Link to={`/hallazgos?auditoriaId=${id}`} className="btn rt-btn-primary btn-sm mt-3">Ver panel de hallazgos</Link>
@@ -99,7 +100,7 @@ export default function ChecklistAuditoria() {
           <div key={item.id_item} className="pb-3" style={{ borderBottom: "1px solid var(--rt-border)" }}>
             <div className="d-flex justify-content-between mb-2">
               <span className="small">{item.descripcion}</span>
-              <span className={`rt-badge ${item.criticidad === "Alta" ? "rt-badge-alta" : "rt-badge-media"}`}>{item.criticidad}</span>
+              <span className={`rt-badge ${claseSeveridad(item.criticidad)}`}>{item.criticidad}</span>
             </div>
             <div className="btn-group btn-group-sm mb-2" role="group">
               {["Cumple", "Parcial", "No cumple"].map((op) => (

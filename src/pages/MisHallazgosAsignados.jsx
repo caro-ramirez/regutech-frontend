@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { apiGet } from "../utils/api";
+import { claseSeveridad } from "../utils/severidad";
 
 const ESTADO_CLASE = {
   Abierto: "rt-badge-media",
@@ -36,7 +37,7 @@ export default function MisHallazgosAsignados() {
                 </div>
               </div>
               <div className="d-flex align-items-center gap-2">
-                <span className={`rt-badge ${h.severidad === "Alta" ? "rt-badge-alta" : h.severidad === "Media" ? "rt-badge-media" : "rt-badge-baja"}`}>
+                <span className={`rt-badge ${claseSeveridad(h.severidad)}`}>
                   {h.severidad}
                 </span>
                 <span className={`rt-badge ${ESTADO_CLASE[h.estado] ?? "rt-badge-media"}`}>{h.estado}</span>

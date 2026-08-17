@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { apiGet, apiPost } from "../utils/api";
+import { claseSeveridad, OPCIONES_SEVERIDAD } from "../utils/severidad";
 
 export default function BackofficeNormasGlobales() {
   const [normas, setNormas] = useState([]);
@@ -103,7 +104,7 @@ export default function BackofficeNormasGlobales() {
             {items.map((it) => (
               <div key={it.id_item} className="d-flex justify-content-between small py-2" style={{ borderBottom: "1px solid var(--rt-border)" }}>
                 <span>{it.descripcion}</span>
-                <span className={`rt-badge ${it.criticidad === "Alta" ? "rt-badge-alta" : it.criticidad === "Media" ? "rt-badge-media" : "rt-badge-baja"}`}>
+                <span className={`rt-badge ${claseSeveridad(it.criticidad)}`}>
                   {it.criticidad}
                 </span>
               </div>
@@ -118,9 +119,7 @@ export default function BackofficeNormasGlobales() {
             <div className="col-3">
               <select className="form-select form-select-sm rt-input" value={nuevoItemCrit} onChange={(e) => setNuevoItemCrit(e.target.value)}>
                 <option value="">Criticidad...</option>
-                <option>Alta</option>
-                <option>Media</option>
-                <option>Baja</option>
+                {OPCIONES_SEVERIDAD.map((s) => <option key={s}>{s}</option>)}
               </select>
             </div>
             <div className="col-2">
